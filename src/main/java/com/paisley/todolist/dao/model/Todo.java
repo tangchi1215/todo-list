@@ -1,8 +1,7 @@
 package com.paisley.todolist.dao.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
@@ -10,6 +9,8 @@ import java.time.LocalDateTime;
 @Table(name = "todos")
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
+@Data
 public class Todo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,7 +23,7 @@ public class Todo {
 
     // 使用 FLAG 表示完成狀態（'Y' = 完成, 'N' = 未完成）
     @Column(nullable = false, length = 1)
-    private char completed = 'N';
+    private String completed;
 
     // 建立日期，預設為當前時間
     @Column(nullable = false, updatable = false)
